@@ -10,8 +10,6 @@ import(
 
 func main(){
 
-	const income uint = 65000
-
 	type monthlyExpenses struct{
 		rent int
 		carInsurance int
@@ -30,12 +28,21 @@ func main(){
 	}
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("-----Monthly Expenses----")
 
-	fmt.Print("Enter Rent: ")
+	fmt.Println("Enter yearly income - taxes: ")
 	input, _  := reader.ReadString('\n')
 	format := strings.Split(input, "\n")[0]
-	rent, _ := strconv.Atoi(format)
+	income, _ := strconv.Atoi(format)
+	fmt.Println("Income set: ", income)
+	fmt.Println("")
+
+	fmt.Println("-----Monthly Expenses----")
+	fmt.Println("")
+
+	fmt.Print("Enter Rent: ")
+	input1, _  := reader.ReadString('\n')
+	format1 := strings.Split(input1, "\n")[0]
+	rent, _ := strconv.Atoi(format1)
 
 	fmt.Println("Enter Car Insurance: ")
 	input2, _  := reader.ReadString('\n')
