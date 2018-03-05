@@ -10,14 +10,6 @@ import(
 
 func main(){
 
-	type monthlyExpenses struct{
-		rent int
-		carInsurance int
-		rentersInsurance int
-		gifts int
-		travel int
-		healthInsurance int
-	}
 	type WeeklyExpenses struct{
 		gas int
 		drinks int
@@ -26,6 +18,20 @@ func main(){
 	type DailyExpenses struct{
 		lunch int
 		dinner int
+	}
+	getMonthlyExpeneses()
+
+}
+
+func getMonthlyExpeneses(){
+
+	type monthlyExpenses struct{
+		rent int
+		carInsurance int
+		rentersInsurance int
+		gifts int
+		travel int
+		healthInsurance int
 	}
 
 	reader := bufio.NewReader(os.Stdin)
@@ -64,13 +70,11 @@ func main(){
 	input5, _  := reader.ReadString('\n')
 	format5 := strings.Split(input5, "\n")[0]
 	travel, _ := strconv.Atoi(format5)
-	
+
 	fmt.Println("Enter Health Insurance: ")
 	input6, _  := reader.ReadString('\n')
 	format6 := strings.Split(input6, "\n")[0]
 	healthInsurance, _ := strconv.Atoi(format6)
-
-
 
 	// Assign data back to pointed reference of expense struct
 
@@ -80,5 +84,7 @@ func main(){
 	fmt.Println(s)
 
 }
+
+
 
 
