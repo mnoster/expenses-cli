@@ -10,20 +10,17 @@ import(
 
 func main(){
 
-	type WeeklyExpenses struct{
-		gas int
-		drinks int
-		groceries int
-	}
 	type DailyExpenses struct{
 		lunch int
 		dinner int
 	}
-	getMonthlyExpeneses()
+
+	getMonthlyExpenses()
+	getWeeklyExpenses()
 
 }
 
-func getMonthlyExpeneses(){
+func getMonthlyExpenses(){
 
 	type monthlyExpenses struct{
 		rent int
@@ -86,5 +83,41 @@ func getMonthlyExpeneses(){
 }
 
 
+
+func getWeeklyExpenses(){
+
+	type weeklyExpenses struct{
+		gas int
+		drinks int
+		groceries int
+	}
+
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Println("-----Weekly Expenses----")
+	fmt.Println("")
+
+	fmt.Println("Enter Gas Expense: ")
+	input1, _  := reader.ReadString('\n')
+	format1 := strings.Split(input1, "\n")[0]
+	gas, _ := strconv.Atoi(format1)
+
+	fmt.Println("Enter Drinks Expense: ")
+	input2, _  := reader.ReadString('\n')
+	format2 := strings.Split(input2, "\n")[0]
+	drinks, _ := strconv.Atoi(format2)
+
+	fmt.Println("Enter Groceries Expense: ")
+	input3, _  := reader.ReadString('\n')
+	format3 := strings.Split(input3, "\n")[0]
+	groceries, _ := strconv.Atoi(format3)
+
+	// Assign data back to pointed reference of expense struct
+
+	s := weeklyExpenses{gas, drinks, groceries}
+// 	sp := &s
+	fmt.Println(s)
+
+}
 
 
