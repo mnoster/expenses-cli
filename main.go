@@ -16,6 +16,7 @@ func main(){
 		rentersInsurance int
 		gifts int
 		travel int
+		healthInsurance int
 	}
 	type WeeklyExpenses struct{
 		gas int
@@ -29,7 +30,7 @@ func main(){
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Println("Enter yearly income - taxes: ")
+	fmt.Println("Enter yearly income after taxes: ")
 	input, _  := reader.ReadString('\n')
 	format := strings.Split(input, "\n")[0]
 	income, _ := strconv.Atoi(format)
@@ -39,7 +40,7 @@ func main(){
 	fmt.Println("-----Monthly Expenses----")
 	fmt.Println("")
 
-	fmt.Print("Enter Rent: ")
+	fmt.Println("Enter Rent: ")
 	input1, _  := reader.ReadString('\n')
 	format1 := strings.Split(input1, "\n")[0]
 	rent, _ := strconv.Atoi(format1)
@@ -63,10 +64,17 @@ func main(){
 	input5, _  := reader.ReadString('\n')
 	format5 := strings.Split(input5, "\n")[0]
 	travel, _ := strconv.Atoi(format5)
+	
+	fmt.Println("Enter Health Insurance: ")
+	input6, _  := reader.ReadString('\n')
+	format6 := strings.Split(input6, "\n")[0]
+	healthInsurance, _ := strconv.Atoi(format6)
 
 
 
-	s := monthlyExpenses{rent, carInsurance, rentersInsurance, gifts, travel}
+	// Assign data back to pointed reference of expense struct
+
+	s := monthlyExpenses{rent, carInsurance, rentersInsurance, gifts, travel, healthInsurance}
 	sp := &s
 	sp.rent = rent
 	fmt.Println(s)
