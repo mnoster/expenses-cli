@@ -24,7 +24,7 @@ type MonthlyExpenses struct{
 //	getDailyExpenses()
 //}
 
-func getMonthlyExpenses() []int {
+func getMonthlyExpenses() [6]int {
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -70,7 +70,7 @@ func getMonthlyExpenses() []int {
 
 	// Assign data back to pointed reference of expense struct
 
-	s []int = [rent, carInsurance, rentersInsurance, gifts, travel, healthInsurance]
+	s := [6]int{rent, carInsurance, rentersInsurance, gifts, travel, healthInsurance}
 	fmt.Println(s)
 	return s
 
@@ -83,7 +83,7 @@ type weeklyExpenses struct{
 	groceries int
 }
 
-func getWeeklyExpenses() weeklyExpenses{
+func getWeeklyExpenses() [3]int{
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("-----Weekly Expenses----")
@@ -106,8 +106,7 @@ func getWeeklyExpenses() weeklyExpenses{
 
 	// Assign data back to pointed reference of expense struct
 
-	s := weeklyExpenses{gas, drinks, groceries}
-// 	sp := &s
+	s := [3]int{gas, drinks, groceries}
 	fmt.Println(s)
 	return s
 
@@ -118,7 +117,7 @@ type dailyExpenses struct{
 	dinner int
 }
 
-func getDailyExpenses() dailyExpenses{
+func getDailyExpenses() [3]int{
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -137,7 +136,7 @@ func getDailyExpenses() dailyExpenses{
 
 	// Assign data back to pointed reference of expense struct
 
-	s := dailyExpenses{lunch, dinner}
+	s := [3]int{lunch, dinner}
 	fmt.Println(s)
 	return s
 
@@ -146,24 +145,37 @@ func getDailyExpenses() dailyExpenses{
 func calculateAverage(){
 // Monthly * 12
 	monthly := getMonthlyExpenses()
-	j := 0
-	for i := 0; i < 6 ; i++ {
-		j += monthly[i]
+	m := 0
+	for i := 0; i < len(monthly) ; i++ {
+		m += monthly[i]
 
 	}
-	fmt.Println(j)
+	fmt.Println("TOTAL MONTHLY: " , m)
 // Weekly * 52
-// Daily * 365
+	weekly := getWeeklyExpenses()
+	w := 0
+	for t := 0; t < len(weekly) ; t++ {
+		w += weekly[t] *  3
 
+	}
+	fmt.Println("TOTAL WEEKLY: " ,w)
+
+// Daily * 365
+	daily := getDailyExpenses()
+	d := 0
+	for n := 0; n < len(daily) ; n++ {
+		d += daily[n] * 30
+
+	}
+	fmt.Println("TOTAL DAILY: ", d) 
+
+	total := (m + w + d) / 30
+	fmt.Println("Total: ", total )
 // Total / 365
 }
 
 func main(){
 	calculateAverage()
-	//	getMonthlyExpenses()
-	getWeeklyExpenses()
-	getDailyExpenses()
-
 }
 
 
