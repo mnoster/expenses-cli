@@ -7,3 +7,5 @@ _____________________
 - Weekly Expenses 
 - Daily Expenses
 - Yearly Savings
+
+##### Execute the binary `expenses-cli` in the terminal or run `go run main.go` to use.
