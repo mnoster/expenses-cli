@@ -1,5 +1,6 @@
 # expenses-cli
-Simple CLI to track expenses built with golang
+
+Simple CLI to track expenses. Built with golang <3
 _____________________
 
 - Monthly Expenses
